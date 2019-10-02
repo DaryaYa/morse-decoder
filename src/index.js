@@ -38,16 +38,21 @@ const MORSE_TABLE = {
 };
 
 function decode(expr) {
-    var letters = expr.match(/.{1,10}/g);
-    var str = "";
-    for (var i = 0; i < letters.length; i++) {
-        for (var j = 0; j < MORSE_TABLE.length; j++) {
-            if (letters[i] = MORSE_TABLE[j]) { str += MORSE_TABLE[j]; }
-        }
-    }
-    return str;
-}
+    let letters = expr.match(/.{1,10}/g);
+    console.log(letters);
 
-module.exports = {
-    decode
+    for (var i = 0; i < 5; i++) {
+        let words = letters[i].match(/.{1,2}/g);
+        console.log(words);
+
+    }
+
+
 }
+const expr = "00101010100000000010001011101000101110100000111111**********00001011110000111111000010111000101110100000111010";
+decode(expr);
+
+
+//module.exports = {
+// decode
+//}
