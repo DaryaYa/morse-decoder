@@ -40,7 +40,7 @@ const MORSE_TABLE = {
 function decode(expr) {
     let letters = expr.match(/.{1,10}/g);
     console.log(letters);
-
+    let words5 = "";
     for (var i = 0; i < letters.length; i++) {
         let words = letters[i].match(/.{1,2}/g);
 
@@ -52,12 +52,22 @@ function decode(expr) {
         let words2 = words1.join("");
         let words3 = words2.replace(/10/g, ".");
         let words4 = words3.replace(/11/g, "-");
-        console.log(words4);
+        if (letters[i] !== "**********") {
+            for (let key in MORSE_TABLE) {
+                if (words4 == key) {
+                    words5 += MORSE_TABLE[key];
+                }
+            }
+        } else { words5 += " " }
+
+
+
     }
+    console.log(words5);
 
 
 }
-const expr = "00101010100000000010001011101000101110100000111111**********00001011110000111111000010111000101110100000111010";
+const expr = "000000001100101010100000000010**********00111110110000101011000000101000111011100000111011**********00111010100000101110000011111100001011110000001110**********001010111000001111110011101011**********00101111110000101011000000111100101111100000101010**********0000111111001010101100000000100000101110**********000000001100101010100000000010**********0010111010000000101100111110100011101111**********000011101000001111110000111110";
 decode(expr);
 
 //var representation = str.replace(/([.-]+[-.]*)/g, (_, x) => dictionary[x]);
